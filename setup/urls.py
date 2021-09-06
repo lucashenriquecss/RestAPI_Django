@@ -1,8 +1,14 @@
 
 from django.contrib import admin
-from django.urls import path
-from escola.views import alunos #importando função aluno
+from django.urls import path, include
+from escola.views import AlunosViewSet,CursoViewset
+from rest_framework import routers
+
+router = routers.DefaultRouter() #rota principal default
+router.register('alunos', AlunosViewSet, basename='Alunos')
+router.register('cursos', CursoViewset, basename='Cursos')
+
 urlpatterns = [
-    path('alunos/',alunos),
+    path('',include(router.urls)),
     path('admin/', admin.site.urls),
 ]
