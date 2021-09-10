@@ -1,5 +1,5 @@
 from django.contrib import admin
-from escola.models import Aluno, Curso
+from escola.models import Aluno, Curso, Matricula
 # Register your models here.
 """Configurar o admin para criar e atualizar os alunos e cursos """
 
@@ -32,3 +32,18 @@ class Cursos(admin.ModelAdmin):
     search_fields=('codigo_curso', 'nivel')
     
 admin.site.register(Curso,Cursos)
+
+
+
+
+class Matriculas(admin.ModelAdmin):
+    list_display =(
+        'id',
+        'aluno',
+        'curso',
+        'periodo',
+    )
+    list_display_links=('id',)
+    
+    
+admin.site.register(Matricula,Matriculas)

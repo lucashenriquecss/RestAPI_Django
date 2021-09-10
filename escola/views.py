@@ -1,6 +1,7 @@
+from django.db.models.query import QuerySet
 from rest_framework import viewsets
-from escola.models import Aluno, Curso
-from escola.serializer import AlunoSerializer,CursoSerializer
+from escola.models import Aluno, Curso, Matricula
+from escola.serializer import AlunoSerializer,CursoSerializer, MatriculaSerializer
 
 class AlunosViewSet(viewsets.ModelViewSet):
     """Exibir todos os alunos e alunas"""
@@ -16,5 +17,8 @@ class CursoViewset(viewsets.ModelViewSet):
     serializer_class = CursoSerializer
 
 
- 
+class MatriculaViewset(viewsets.ModelViewSet):
+     QuerySet = Matricula.objects.all()
+     serializer_class = MatriculaSerializer
+
 """Registrando URLs"""
